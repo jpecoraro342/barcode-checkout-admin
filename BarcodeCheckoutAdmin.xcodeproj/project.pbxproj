@@ -20,6 +20,7 @@
 		158CF8D71CA79BDA00432A83 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 158CF8D41CA79BDA00432A83 /* SwiftyJSON.framework */; };
 		158CF8D81CA79BDA00432A83 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 158CF8D41CA79BDA00432A83 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		158CF8E81CA7A0DB00432A83 /* NetworkingFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158CF8E71CA7A0DB00432A83 /* NetworkingFacade.swift */; };
+		158CF8EF1CA7B03C00432A83 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158CF8EE1CA7B03C00432A83 /* ItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,7 @@
 		158CF8D31CA79BDA00432A83 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		158CF8D41CA79BDA00432A83 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		158CF8E71CA7A0DB00432A83 /* NetworkingFacade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingFacade.swift; sourceTree = "<group>"; };
+		158CF8EE1CA7B03C00432A83 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				158CF8E61CA7A0B900432A83 /* Networking */,
 				158CF8CC1CA79A6100432A83 /* BarcodeScanner */,
 				154412341CA799230056700C /* AppDelegate.swift */,
+				158CF8EE1CA7B03C00432A83 /* ItemTableViewCell.swift */,
 				154412361CA799230056700C /* ViewController.swift */,
 				154412381CA799230056700C /* Main.storyboard */,
 				1544123B1CA799230056700C /* Assets.xcassets */,
@@ -158,6 +161,7 @@
 				TargetAttributes = {
 					154412301CA799230056700C = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = CX87MDXJNH;
 					};
 				};
 			};
@@ -202,6 +206,7 @@
 				154412371CA799230056700C /* ViewController.swift in Sources */,
 				158CF8D11CA79A7400432A83 /* BarcodeFinderView.swift in Sources */,
 				154412351CA799230056700C /* AppDelegate.swift in Sources */,
+				158CF8EF1CA7B03C00432A83 /* ItemTableViewCell.swift in Sources */,
 				158CF8D01CA79A7400432A83 /* Barcode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +318,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -321,6 +328,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josephpecoraro.BarcodeCheckoutAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -328,6 +336,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -336,6 +346,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josephpecoraro.BarcodeCheckoutAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

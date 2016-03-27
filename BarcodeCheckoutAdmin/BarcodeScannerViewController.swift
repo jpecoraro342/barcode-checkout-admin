@@ -25,6 +25,10 @@ class BarcodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
     
     var alertView : UIAlertView?
     
+    var methodCalled : Bool = false;
+    
+    var completionBlock : ((list: Array<String>?) -> Void)?
+    
     //MARK:
     //MARK: View Lifecycle
     override func viewDidLoad() {
@@ -121,6 +125,15 @@ class BarcodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
         bottomBar.backgroundColor = UIColor(white: 0.15,
             alpha: 0.7)
         
+        let cancelButton = UIButton(frame: CGRectMake(0,0,CGRectGetWidth(UIScreen.mainScreen().bounds),60))
+        cancelButton.setTitle("Cancel", forState: .Normal)
+        cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        cancelButton.addTarget(self,
+            action: "dismissSelf",
+            forControlEvents: .TouchUpInside)
+        
+        bottomBar.addSubview(cancelButton)
+        
         view.addSubview(bottomBar)
     }
     
@@ -176,6 +189,13 @@ class BarcodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
         startRunning()
     }
     
+    func dismissSelf() {
+        stopRunning()
+        dismissViewControllerAnimated(true, completion: {
+            
+        })
+    }
+    
     //MARK:
     func isValidBarcode(barcode: Barcode) -> Bool {
         if barcode.barcodeType != nil {
@@ -185,14 +205,20 @@ class BarcodeScannerViewController: UIViewController, AVCaptureMetadataOutputObj
     }
     
     func validBarcodeFound(barcode: Barcode) {
-        if alertView != nil {
-            return;
+        if (methodCalled) {
+            return
         }
+        
+        methodCalled = true
         
         NSLog("Barcode: \(barcode)\n\n")
         
-        alertView = UIAlertView(title: "Barcode Found", message: barcode.description, delegate: self, cancelButtonTitle: "Ok")
-        alertView?.show()
+        NetworkingFacade().getBarcodeList(barcode.barcodeValue! as String) { (error, list) -> Void in
+            self.dismissViewControllerAnimated(true, completion: {
+                self.stopRunning()
+                self.completionBlock?(list: list)
+            })
+        }
     }
     
     func bringAllSubviewsToFront() {
